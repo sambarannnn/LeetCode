@@ -19,7 +19,7 @@ class Solution {
         while(i < s.length() && j < s.length()) {
             if(map.containsKey(s.charAt(j))) {
                 int previndex = map.get(s.charAt(j));//prev index of currrent element
-                i = Math.max(i, previndex+1);//
+                i = Math.max(i, previndex+1);//ensuring that i doesn't move behind current i i.e., doesnt move leftwards
                 }
             maxlength = Math.max(maxlength, j-i+1);
             map.put(s.charAt(j), j);
