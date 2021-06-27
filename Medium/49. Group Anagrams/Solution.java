@@ -3,17 +3,14 @@ class Solution {
         List<List<String>> res = new ArrayList<List<String>>();
         HashMap<String, List<String>> map = new HashMap<String, List<String>>();
         for(String s : strs) {
-            char key[] = s.toCharArray();
-            Arrays.sort(key);
-            //System.out.println(String.valueOf(key));
-            if (!map.containsKey(String.valueOf(key))){
-                //System.out.println(String.valueOf(key));
-                map.put(String.valueOf(key), new ArrayList<String>());
-            }
+            char temp[] = s.toCharArray();
+            Arrays.sort(temp);
+            String key = String.valueOf(temp);
             
-            map.get(String.valueOf(key)).add(s);
-            //System.out.println(map.get(String.valueOf(key)));
-            //strs[i++] = String.valueOf(tempArray); //.toString();
+            if (!map.containsKey(key)){
+                map.put(key, new ArrayList<String>());
+            }
+            map.get(key).add(s);
         }
         
         for (Map.Entry<String, List<String>> entry : map.entrySet()) {
@@ -27,7 +24,6 @@ class Solution {
             System.out.println();
             */
         }
-        
         return res;
     }
 }
