@@ -30,7 +30,7 @@ class Solution {
                 break;
         }
         //now we have correct inorder index value
-        TreeNode root = new TreeNode(preorder[preorder_index]);
+        TreeNode root = new TreeNode(inorder[inorder_index]);
         //for first half of inorder array
         root.left = create(preorder_index + 1, inorder_startindex, inorder_index - 1, preorder, inorder);
         //for 2nd half of inorder array
@@ -39,3 +39,30 @@ class Solution {
         return root;
     }
 }
+/*
+class Solution {
+    static int idx;
+    public TreeNode buildTree(int[] preorder, int[] inorder) {
+        this.idx = 0;
+        return create(0, inorder.length - 1, preorder, inorder);
+    }
+    
+    public TreeNode create(int instart, int inend, int[] preorder, int[] inorder) {
+        if(idx > preorder.length - 1 || instart > inend)
+            return null;
+        
+        TreeNode root = new TreeNode(preorder[idx]);
+        
+        int inindex = -1;
+        for(int i = instart; i <= inend; i++) {
+            if(preorder[idx] == inorder[i])
+                inindex = i;
+        }
+        idx++;
+        
+        root.left = create(instart, inindex - 1, preorder, inorder);
+        root.right = create(inindex + 1, inend, preorder, inorder);
+        return root;
+    }
+}
+*/
