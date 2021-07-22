@@ -8,18 +8,17 @@ class Solution {
         int length = 0;
 
         for(Map.Entry<Character, Integer> entry : map.entrySet()) {
-            if(entry.getValue() % 2 == 0) {
+            if(entry.getValue() % 2 == 0) {//even frequency
                 length += entry.getValue();
                 map.put(entry.getKey(), 0);
-            } else if(entry.getValue()-2 > 0) {//odd but not 1
+            } else if(entry.getValue()-2 > 0) {//odd frequency but not 1
                 length += entry.getValue() - 1;
                 map.put(entry.getKey(), 1);
             }
-        }
-        for(Map.Entry<Character, Integer> entry : map.entrySet()) {
-            if(entry.getValue() == 1){
+            //after checking these two conditions, check for below condition
+            if(length % 2 == 0 && entry.getValue() % 2 != 0) {//if length is even, we have the possibility for a center
                 length++;
-                break;
+                map.put(entry.getKey(), entry.getValue()-1);
             }
         }
         return length;
