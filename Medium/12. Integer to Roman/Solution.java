@@ -25,7 +25,7 @@ class Solution {
             while(symbol_freq-- > 0) {
                 result.append(entry.getKey());//repeatedly add this symbol
             }
-            num = num % entry.getValue();//get rid of the most significant digit(leftmost)
+            num = num % entry.getValue();//get rid of the most significant digit(s)(leftmost ones that have already been represented in romans)
         }
         return result.toString();
     }
