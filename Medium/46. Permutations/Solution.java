@@ -1,29 +1,22 @@
 class Solution {
     public List<List<Integer>> permute(int[] nums) {
-        
-        Queue<List<Integer>> permutations = new LinkedList<List<Integer>>();//to use as LIFO
-        permutations.add(new ArrayList<Integer>());//initializing with empty list
-        
-        while(permutations.peek().size() != nums.length) {
-            //linked hashset so that order of insertion is maintained
-            //hashset will give us O(1) lookup
-            HashSet<Integer> curr_permutation = new LinkedHashSet<Integer>(permutations.remove());
-            //using list instead, gives us faster answer still
-            //List<Integer> curr_permutation = permutations.remove();//to find permutations of each combination
-            
-            for(int i = 0; i < nums.length; i++) {
-                
-                if(curr_permutation.contains(nums[i]))//no duplicates
-                    continue;
-                
-                List<Integer> temp = new ArrayList<Integer>(curr_permutation);
-                
-                //List<Integer> temp = new ArrayList<Integer>(curr_permutation);//so that original list doesn't get affected
-                temp.add(nums[i]);//create permutation
-                
-                permutations.add(temp);//add at last
+        List<List<Integer>> result = new ArrayList<List<Integer>>();
+        backtrack(nums, new boolean[nums.length], new ArrayList<Integer>(), result);
+        return result;
+    }
+    private void backtrack(int[] nums, boolean[] visited_indexes, List<Integer> current, List<List<Integer>> result) {
+        if(current.size() == nums.length) {
+            result.add(new ArrayList<Integer>(current));
+            return;
+        }
+        for(int i = 0; i < nums.length; i++) {
+            if(!visited_indexes[i]) {
+                current.add(nums[i]);
+                visited_indexes[i] = true;
+                backtrack(nums, visited_indexes, current, result);
+                current.remove(current.size() - 1);
+                visited_indexes[i] = false;
             }
         }
-        return (List) permutations;
     }
 }
