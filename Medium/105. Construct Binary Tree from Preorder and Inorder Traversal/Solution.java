@@ -14,55 +14,28 @@
  * }
  */
 class Solution {
+    int index = 0;
     public TreeNode buildTree(int[] preorder, int[] inorder) {
-        TreeNode root = create(0, 0, inorder.length - 1, preorder, inorder);
-        return root;
+        return build(preorder, inorder, 0, inorder.length-1);
     }
     
-    private TreeNode create(int preorder_index, int inorder_startindex, int inorder_endindex, int[] preorder, int[] inorder) {
-        
-        if(preorder_index > preorder.length -1 || inorder_startindex > inorder_endindex)
-            return null;
-        
-        int inorder_index;
-        for(inorder_index = inorder_startindex; inorder_index <= inorder_endindex; inorder_index++) {
-            if(preorder[preorder_index] == inorder[inorder_index])
-                break;
+    private int search(int[] inorder, int start, int end, int val) {
+        for(int i = start; i <= end; i++) {
+            if(inorder[i] == val)
+                return i;
         }
-        //now we have correct inorder index value
-        TreeNode root = new TreeNode(inorder[inorder_index]);
-        //for first half of inorder array
-        root.left = create(preorder_index + 1, inorder_startindex, inorder_index - 1, preorder, inorder);
-        //for 2nd half of inorder array
-        root.right = create(preorder_index + (inorder_index - inorder_startindex) + 1, inorder_index + 1, inorder_endindex, preorder, inorder);
-        
+        return -1;
+    }
+    
+    private TreeNode build(int[] preorder, int[] inorder, int start, int end) {
+        if(start > end) {
+            return null;
+        }
+        int val = preorder[index++];
+        int curr = search(inorder, start, end, val);
+        TreeNode root = new TreeNode(val);
+        root.left = build(preorder, inorder, start, curr-1);
+        root.right = build(preorder, inorder, curr+1, end);
         return root;
     }
 }
-/*
-class Solution {
-    static int idx;
-    public TreeNode buildTree(int[] preorder, int[] inorder) {
-        this.idx = 0;
-        return create(0, inorder.length - 1, preorder, inorder);
-    }
-    
-    public TreeNode create(int instart, int inend, int[] preorder, int[] inorder) {
-        if(idx > preorder.length - 1 || instart > inend)
-            return null;
-        
-        TreeNode root = new TreeNode(preorder[idx]);
-        
-        int inindex = -1;
-        for(int i = instart; i <= inend; i++) {
-            if(preorder[idx] == inorder[i])
-                inindex = i;
-        }
-        idx++;
-        
-        root.left = create(instart, inindex - 1, preorder, inorder);
-        root.right = create(inindex + 1, inend, preorder, inorder);
-        return root;
-    }
-}
-*/
