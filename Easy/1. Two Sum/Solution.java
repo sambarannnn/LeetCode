@@ -1,7 +1,7 @@
 import java.util.*;
 class Solution {
     public int[] twoSum(int[] nums, int target) {
-        /*
+        /*/*
         //generic method
         if(nums == null)
 	    		return null;
@@ -50,7 +50,7 @@ class Solution {
 		    }
         }
         return res;
-        */
+        */ */
         //using hashtable or hashmap to have O(1) access to elements
         Hashtable<Integer,Integer> hm = new Hashtable<Integer,Integer>();
         int complement;
