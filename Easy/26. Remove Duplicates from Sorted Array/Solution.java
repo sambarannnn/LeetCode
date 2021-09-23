@@ -1,5 +1,5 @@
 class Solution {
-    /*//O(n^2) solution start from end of array, if next element(behind the curr) is same as curr, then move all elements from right end one space behind.
+    /*O(n^2) solution start from end of array, if next element(behind the curr) is same as curr, then move all elements from right end one space behind.
     public int removeDuplicates(int[] nums) {
         int l = nums.length;
         int count = 0;
