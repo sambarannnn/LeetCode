@@ -24,8 +24,7 @@ class Solution {
                 st.push(i);
             }
         }
-        //left contains all the left limits per index
-        //reuse same stack for tracking right limits
+        //left contains all the left limits per index reuse same stack for tracking right limits
         st.clear();
         //loop to fill in right limits, runs from last index to first
         for(int i = n-1; i >= 0; i--) {
