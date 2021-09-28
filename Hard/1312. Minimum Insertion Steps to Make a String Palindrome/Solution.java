@@ -1,6 +1,6 @@
 class Solution {
     public int minInsertions(String s) {
-      //SAME AS MIN DLETIONS TO MAKE A STRING PAINDROME
+      //SAME AS MINIMUM DLETIONS TO MAKE A STRING PAINDROME
         String rev = new StringBuilder(s).reverse().toString();
         int[][] dp = new int[s.length()+1][rev.length()+1];
         
