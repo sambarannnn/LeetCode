@@ -10,6 +10,7 @@ class Solution {
         memo = new int[arr.length+1][arr.length+1];
         return solver(arr, 1, arr.length-1);
     }
+    
     private int solver(int[] arr, int i, int j) {
         if(i == j)
             return 0;
