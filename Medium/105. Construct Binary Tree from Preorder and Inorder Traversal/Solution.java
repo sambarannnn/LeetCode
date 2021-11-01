@@ -26,7 +26,6 @@ class Solution {
         }
         return -1;
     }
-    
     private TreeNode build(int[] preorder, int[] inorder, int start, int end) {
         if(start > end) {
             return null;
