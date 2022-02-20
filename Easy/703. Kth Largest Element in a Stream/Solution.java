@@ -1,25 +1,21 @@
 class KthLargest {
 
-    private PriorityQueue<Integer> minheap;
-    private int k;
-            
+    int k;
+    PriorityQueue<Integer> minheap = new PriorityQueue<Integer>();
     public KthLargest(int k, int[] nums) {
         this.k = k;
-        minheap = new PriorityQueue<Integer>();
-        for(int num : nums)
-            add(num);
+        for(int num : nums) {
+            minheap.add(num);
+            if(minheap.size() > k) {
+                minheap.remove();
+            }
+        }
     }
     
     public int add(int val) {
-        //if minheap is smaller than k
-        if(minheap.size() < k) {
-            minheap.add(val);
-        } else {//if minheap is bigger than k
-            if(val > minheap.peek()) {//minheap has only k elements, root of minheap is the smallest element, insert into minheap only if this new val is bigger than the smallest, as we are only interested in keeping the largest 3 in the minheap
-                minheap.remove();
-                minheap.add(val);
-            }
-        }
+        minheap.add(val);
+        while(minheap.size() > k)
+            minheap.remove();
         return minheap.peek();
     }
 }
