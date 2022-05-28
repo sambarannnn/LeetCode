@@ -5,6 +5,7 @@ class Solution {
         //difference will give us missing element
         //gaussian formuula
         //sum until n nos = n(n+1)/2
+        
         int expectedSum = nums.length*(nums.length + 1)/2;
         int actualsum = 0;
         for(int i = 0; i < nums.length; i++)
