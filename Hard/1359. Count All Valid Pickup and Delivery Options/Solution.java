@@ -4,7 +4,6 @@ class Solution {
         long[] dp = new long[501];
         dp[1] = 1;
         dp[2] = 6;
-        
         for (int i = 3; i <= n; ++i) {
             int places = 2 * i - 1;
             int multi = places * (places + 1) / 2;
