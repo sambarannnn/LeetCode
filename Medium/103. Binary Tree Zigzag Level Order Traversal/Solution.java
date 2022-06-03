@@ -20,7 +20,9 @@ class Solution {
         queue.add(root);
         if(root == null) 
             return zigzaglevelorder;
+        
         boolean zigzag = true;
+        
         while(!queue.isEmpty()) {
             int levelNum = queue.size();
             Deque<Integer> current = new ArrayDeque<Integer>();
