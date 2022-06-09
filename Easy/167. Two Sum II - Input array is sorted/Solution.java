@@ -34,19 +34,5 @@ class Solution {
         //     }
         // }
         // return ans;
-        
-        // //O(N^2)
-        // for(int i = 0; i < numbers.length; i++) {
-        //     int ele1 = numbers[i];
-        //     for(int j = i + 1; j < numbers.length; j++) {
-        //         int ele2 = numbers[j];
-        //         if(ele1+ele2 == target){
-        //             ans[0] = i+1;
-        //             ans[1] = j+1;
-        //             return ans;
-        //         }
-        //     }
-        // }
-        // return ans;
     }
 }
